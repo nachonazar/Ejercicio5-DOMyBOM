@@ -15,9 +15,9 @@ const iniciarCronómetro = () => {
       minutos++;
     }
 
-    let hora = horas
-    let minuto = minutos
-    let segundo = segundos
+    let hora = horas;
+    let minuto = minutos;
+    let segundo = segundos;
 
     if (horas < 10) {
       hora = "0" + horas;
@@ -33,5 +33,20 @@ const iniciarCronómetro = () => {
     Cronómetro.textContent = `${hora} : ${minuto} : ${segundo}`;
   }, 1000);
 };
+
+const pausarCronómetro = () => {
+  if (timerId) {
+    clearInterval(timerId);
+    timerId = null;
+  }
+};
+const reiniciarCronómetro = () => {
+  location.reload();
+};
+
 const btnIniciar = document.getElementById("btnIniciar");
+const btnPausar = document.getElementById("btnPausar");
+const btnReiniciar = document.getElementById("btnReiniciar");
 btnIniciar.addEventListener("click", iniciarCronómetro);
+btnPausar.addEventListener("click", pausarCronómetro);
+btnReiniciar.addEventListener("click", reiniciarCronómetro);
